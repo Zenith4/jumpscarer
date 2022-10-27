@@ -15,15 +15,25 @@ def sprint(str,ptime=1,ctime=.3,ltime=.05,end='\n'): # the basic sprint function
     return ''
 sprint('What do you want the maximum number of minutes to be jumpscared to be?',end='')
 minutes = input()
+while True:
+    try: 
+        minutes = int(minutes)
+    except:
+        minutes = input("That's not a valid number!")
+    else:
+        break
 seconds = random.randrange(0,60*minutes)
-sprint('You will be jumpscared any second in the next {num_of_min} minutes, starting...')
+if minutes == 1:
+    sprint('You will be jumpscared any second in the next minute starting...')
+else:
+    sprint('You will be jumpscared any second in the next {num_of_min} minutes, starting...'.format(num_of_min=minutes))
 print('Now!')
 start_time = time.time()
 num = 0
 while time.time() < start_time + seconds:
   time.sleep(1)
   num += 1
-  print(num)?
+  print(num)
 time.sleep(.5)
 print('Boo!')
 time.sleep(1)
